@@ -1,1 +1,1 @@
-web: gunicorn --chdir ./thesaurier thesaurier:app
+web: gunicorn --chdir ./ducking-octo-nemesis ducking-octo-nemesis:app
