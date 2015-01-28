@@ -12,7 +12,7 @@
         <div class="container">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="{{ url_for('convertText') }}">Home</a></li>
+                    <li role="presentation"><a href="{{ url_for('generate_random') }}">Home</a></li>
                 </ul>
             </nav>
             <div class="header">
@@ -25,9 +25,10 @@
                         <p>
                             See what the universe wants you to eat:
                         </p>
-                        <form class="form-inline" action="/" method="post">                        <button type="submit" class="btn btn-success btn-lg">
-                          <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> GebRandomFoodAus
-                        </button>
+                        <form class="form-inline" action="/" method="post">                        
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> GibRandomFoodAus
+                            </button>
                         </form>
                         {% if result %}
                         <h2>{{result}}</h2>                            
@@ -35,9 +36,6 @@
                     </div>
                 </div>
             </div>            
-
-            {% block content %}
-            {% endblock content %}
         </div>
     </body>
 </html>

@@ -17,9 +17,9 @@ def load(filename):
 
 
 def random_dish():
-    with load(url_for('static', filename="menu.txt")) as f:
-        r = randint(0, len(f)-1)
-        return f[r]
+    f = load("static/menu.txt")
+    r = randint(0, len(f)-1)
+    return f[r]
 
 
 @app.route("/", methods=["GET", "POST"])
