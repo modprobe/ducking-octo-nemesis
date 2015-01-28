@@ -1,5 +1,4 @@
-from flask import Flask, request, render_template, url_for, redirect, flash
-import json
+from flask import Flask, request, render_template, url_for
 from random import randint
 import requests
 
@@ -7,20 +6,28 @@ import requests
 app = Flask(__name__)
 
 app.config.update(
-    DEBUG = True,
-    SECRET_KEY = 'foobar'
+    DEBUG=True,
+    SECRET_KEY='foobar'
 )
 
-def load_json(filename):
+
+def load(filename):
     with open(filename, 'r') as f:
-        content = f.read()
-        return json.load(f)
+        return f.read().split('\n')
 
 
-@app.route("/random", methods=["POST"])
 def random_dish():
+    with load(url_for('static', filename="menu.txt")) as f:
+        r = randint(0, len(f)-1)
+        return f[r]
 
 
+@app.route("/", methods=["GET", "POST"])
+def generate_random():
+    if request.method == "POST":
+        return render_template('base.html', result=random_dish())
+    else:
+        return render_template('base.html')
 
 if __name__ == '__main__':
     app.run()
